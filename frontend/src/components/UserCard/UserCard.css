@@ -1,0 +1,110 @@
+/* Colored round avatar (gradient circle) — only the rectangle card was removed */
+.user-tile .avatar-large {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-weight: 800;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.user-tile .avatar-large .online-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--online-green);
+  border: 3px solid var(--bg-deep);
+  box-shadow: var(--shadow-online);
+  animation: livePulse 2s ease-in-out infinite;
+}
+
+.user-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+  max-width: 120px;
+}
+
+.user-tile:hover {
+  transform: translateY(-2px);
+}
+
+.user-tile:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 4px;
+  border-radius: var(--radius-md);
+}
+
+.user-tile--you .user-tile__name {
+  color: var(--accent-purple);
+}
+
+.user-tile__name {
+  font-weight: 600;
+  font-size: var(--font-sm);
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.user-tile__bio {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.users-grid--tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 20px 16px;
+  justify-items: center;
+  padding: 8px 0 24px;
+}
+
+.feed-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-sm);
+  padding: 48px 24px;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .user-tile .avatar-large {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .user-tile .avatar-large {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+  }
+}

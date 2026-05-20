@@ -1,0 +1,18 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# Connect repo → New Blueprint → select this file, or create Web Service manually with Docker.
+services:
+  - type: web
+    name: secret-api
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "8080"
+      # After Netlify deploy, set your site URL pattern (comma-separated if multiple):
+      # https://your-app.netlify.app,https://*.netlify.app
+      - key: APP_CORS_ALLOWED_ORIGIN_PATTERNS
+        value: https://*.netlify.app,http://localhost:*,http://127.0.0.1:*

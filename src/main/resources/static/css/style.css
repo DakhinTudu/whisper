@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --secondary: #a855f7;
+    --accent: #f43f5e;
+    --background: #0f172a;
+    --surface: rgba(30, 41, 59, 0.7);
+    --surface-light: rgba(255, 255, 255, 0.05);
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --online: #22c55e;
+    --offline: #64748b;
+    --typing: #fbbf24;
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: #020617;
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Global Container */
+#app {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation / Header */
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Feed View */
+#feedView {
+    padding: 20px;
+    flex: 1;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1));
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 30px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.create-account-box {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    gap: 10px;
+}
+
+.create-account-box input {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px 18px;
+    color: white;
+    outline: none;
+}
+
+/* User Grid - Circular WhatsApp Style */
+.user-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: flex-start;
+    padding: 10px 0;
+}
+
+.social-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 100px; /* Small fixed width for the circle item */
+}
+
+.social-card:hover {
+    transform: scale(1.1);
+}
+
+.social-card .avatar-large {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%; /* Perfect Circle */
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    position: relative;
+    border: 3px solid transparent;
+}
+
+.social-card .online-badge {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 18px;
+    height: 18px;
+    background: var(--online);
+    border: 3px solid #020617;
+    border-radius: 50%;
+    text-indent: -9999px; /* Hide the "Online" text, just show the green dot */
+}
+
+.social-card h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.social-card p {
+    display: none; /* Hide description for the compact look */
+}
+
+.social-card .chat-now-tag {
+    display: none; /* Hide extra tags */
+}
+
+/* Chat View (Full Screen Overlay) */
+#chatView {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background);
+    z-index: 200;
+    display: none;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.back-btn {
+    font-size: 1.2rem;
+    color: var(--text-dim);
+    cursor: pointer;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Message Bubbles */
+.msg {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.msg.sent {
+    align-self: flex-end;
+    background: var(--primary);
+    border-bottom-right-radius: 4px;
+}
+
+.msg.received {
+    align-self: flex-start;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+}
+
+/* Input Area */
+.chat-input-container {
+    padding: 16px 20px;
+    padding-bottom: 30px; /* Safe area for mobile */
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.mobile-input-bar {
+    background: var(--surface-light);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 5px 5px 5px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mobile-input-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 10px 0;
+}
+
+.circle-send {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.circle-send:active { transform: scale(0.9); }
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Profiles Overlay */
+#myProfile {
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: var(--surface-light);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Mobile specific font sizes */
+@media (max-width: 600px) {
+    .user-grid { grid-template-columns: 1fr; }
+    .hero-section { padding: 20px; margin-bottom: 20px; }
+    .hero-section h1 { font-size: 1.5rem; }
+}
