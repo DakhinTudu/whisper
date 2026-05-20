@@ -30,7 +30,7 @@ export function Sidebar({
     <aside className={`sidebar${open ? ' open' : ''}`}>
       <div className="sidebar-logo">
         <div className="logo-icon">💬</div>
-        <span className="logo-text">Whisper</span>
+        <span className="logo-text">Incoginato</span>
       </div>
 
       {loggedIn && (

@@ -40,7 +40,7 @@ export function JoinModal({ open, onClose, onJoin }: JoinModalProps) {
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="modal-card">
-        <h2>🚀 Join Whisper</h2>
+        <h2>🚀 Join Incoginato</h2>
         <div className="input-group">
           <label>Choose a Nickname</label>
           <input

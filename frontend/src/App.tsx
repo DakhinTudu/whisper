@@ -98,7 +98,7 @@ function App() {
     setActiveChatUser(user);
     ensureSession(user);
     clearUnread(user.userId);
-    if (isMobile) setMobileTab('feed');
+    if (isMobile) setMobileTab('chats');
   };
 
   const handleSelectChat = async (userId: string) => {
@@ -180,7 +180,7 @@ function App() {
           fontFamily: 'Inter, sans-serif',
         }}
       >
-        Loading Whisper…
+        Loading Incoginato…
       </div>
     );
   }
@@ -207,7 +207,9 @@ function App() {
           onSelectChat={handleSelectChat}
         />
 
-        <main className="main-content">
+        <main
+          className={`main-content${chatActive && isMobile ? ' main-content--chat-active' : ''}`}
+        >
           <header className="main-header">
             <button
               type="button"
