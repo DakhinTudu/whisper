@@ -298,8 +298,7 @@ Detailed deploy steps live in local docs (ignored from git); mirror the same flo
 
 ## License
 
-This project is provided as-is for learning and demonstration. Add a license file if you plan to open-source or distribute it formally.
-
+This project is provided as-is for learning and demonstration.
 ---
 
 ## Links
