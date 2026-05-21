@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local / prototype ###
+index.html
+frontend/dist/
+frontend/node_modules/
+
+### Markdown docs (only root README.md is tracked) ###
+*.md
+!README.md
